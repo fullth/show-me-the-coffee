@@ -1,0 +1,46 @@
+{
+  "name": "show-me-the-coffee",
+  "version": "0.1.0",
+  "description": "채널톡처럼 스크립트 한 줄로 붙이는 커피 한 잔 후원 위젯. 카카오페이 QR + 커스텀 가능한 플로팅 버튼.",
+  "type": "module",
+  "main": "./dist/show-me-the-coffee.esm.js",
+  "module": "./dist/show-me-the-coffee.esm.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/show-me-the-coffee.esm.js"
+    }
+  },
+  "unpkg": "./dist/show-me-the-coffee.js",
+  "jsdelivr": "./dist/show-me-the-coffee.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "donate",
+    "donation",
+    "tip",
+    "widget",
+    "coffee",
+    "kakaopay",
+    "qr",
+    "buy-me-a-coffee"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.5",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.0"
+  }
+}
