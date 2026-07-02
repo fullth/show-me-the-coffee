@@ -3,6 +3,8 @@ import { resolve } from 'node:path';
 
 export default defineConfig({
   build: {
+    // tsc가 생성한 .d.ts를 지우지 않도록 (build에서 vite 먼저, tsc 나중 순서와 함께)
+    emptyOutDir: false,
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'SMTC',
