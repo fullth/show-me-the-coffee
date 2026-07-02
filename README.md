@@ -14,6 +14,8 @@
 
 ### 스크립트 태그
 
+`kakaoPayUrl` 하나만 있으면 동작합니다.
+
 ```html
 <script src="https://cdn.jsdelivr.net/npm/show-me-the-coffee/dist/show-me-the-coffee.js"></script>
 <script>
@@ -38,6 +40,44 @@ SMTC('boot', {
   name: '임태환',
 });
 ```
+
+### 전체 옵션 예시
+
+버튼 문구(`label`)와 모달 제목(`title`)·설명(`description`)을 각각 지정하고, 색·아이콘·위치까지 커스텀한 예시입니다.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/show-me-the-coffee/dist/show-me-the-coffee.js"></script>
+<script>
+  SMTC('boot', {
+    kakaoPayUrl: 'https://qr.kakaopay.com/xxxx',
+    name: '임태환',
+
+    // 텍스트 — 버튼 문구와 모달 제목/설명을 따로 지정
+    label: '후원하기',
+    title: '개발자에게 커피 한 잔 ☕',
+    description: '이 도구가 도움이 됐다면 커피값으로 응원해주세요!',
+
+    // 색상 · 아이콘
+    accentColor: '#6c5ce7',
+    textColor: '#ffffff',
+    icon: '☕',
+    iconSize: 20,
+
+    // 위치 · 스타일
+    position: 'br',   // 기준 모서리 (br|bl|tr|tl)
+    offsetX: 24,      // 좌/우 가장자리로부터 간격(px)
+    offsetY: 24,      // 위/아래 가장자리로부터 간격(px)
+    radius: 9999,     // 버튼 둥글기(px)
+    theme: 'light',   // light | dark
+
+    // 사용처 추적 (선택)
+    siteKey: 'my-service',
+    analytics: true,
+  });
+</script>
+```
+
+> `title`을 생략하면 모달 제목은 `label`을 그대로 사용하고, `description`을 생략하면 기본 안내 문구가 쓰입니다.
 
 ## 카카오페이 링크 받는 법
 
