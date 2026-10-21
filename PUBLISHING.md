@@ -1,6 +1,6 @@
 # npm 배포
 
-GitHub Actions의 `Publish to npm` workflow가 GitHub Release 발행 또는 수동 실행 시 패키지를 빌드하고 npm에 배포합니다. npm Trusted Publishing(OIDC)을 사용하며, 저장소에 npm 토큰을 저장하지 않습니다.
+GitHub Actions의 `Publish to npm` workflow가 GitHub Release 발행, `publish-v버전` 태그 푸시 또는 수동 실행 시 패키지를 빌드하고 npm에 배포합니다. npm Trusted Publishing(OIDC)을 사용하며, 저장소에 npm 토큰을 저장하지 않습니다.
 
 ## 최초 연결
 
@@ -23,11 +23,16 @@ workflow 파일만 추가해서는 npm 권한이 생기지 않습니다. npm의 
 3. [Publish to npm](https://github.com/fullth/show-me-the-coffee/actions/workflows/publish.yml)의 실행 결과를 확인합니다.
 4. [npm 패키지](https://www.npmjs.com/package/show-me-the-coffee)와 버전이 지정된 jsDelivr URL을 확인합니다.
 
-Git 태그를 푸시하는 것만으로는 실행되지 않습니다. GitHub Release를 발행하거나 Actions 페이지에서 **Run workflow**를 선택하세요. 이미 배포된 npm 버전은 다시 배포할 수 없습니다.
+`v버전` 태그를 푸시하는 것만으로는 실행되지 않습니다. GitHub Release를 발행하거나 Actions 페이지에서 **Run workflow**를 선택하세요. GitHub API 없이 Git만으로 실행하려면 다음과 같이 배포용 태그를 푸시할 수도 있습니다. 이미 배포된 npm 버전은 다시 배포할 수 없습니다.
+
+```bash
+git tag publish-v0.1.2
+git push origin publish-v0.1.2
+```
 
 ## 이번 0.1.2 배포
 
-`v0.1.2` 태그는 workflow 추가 전에 생성되었습니다. npm Trusted Publisher 연결 후에는 현재 master의 workflow를 **Run workflow**로 실행해 `0.1.2`를 배포하세요. 기존 태그를 변경할 필요는 없습니다.
+`v0.1.2` 태그는 workflow 추가 전에 생성되었습니다. npm Trusted Publisher 연결 후에는 workflow가 포함된 커밋에 `publish-v0.1.2` 태그를 올리거나 현재 master의 workflow를 **Run workflow**로 실행해 `0.1.2`를 배포하세요. 기존 태그를 변경할 필요는 없습니다.
 
 배포 후 확인할 주소:
 
