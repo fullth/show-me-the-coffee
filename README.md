@@ -1,6 +1,6 @@
 # show-me-the-coffee
 
-[![npm version](https://img.shields.io/npm/v/show-me-the-coffee.svg)](https://www.npmjs.com/package/show-me-the-coffee)
+[![npm version](https://img.shields.io/npm/v/show-me-the-coffee.svg?cacheSeconds=300)](https://www.npmjs.com/package/show-me-the-coffee)
 
 [npm 패키지](https://www.npmjs.com/package/show-me-the-coffee)
 
@@ -42,7 +42,7 @@
 `kakaoPayUrl`만 필수입니다. 별도의 QR 이미지는 필요하지 않습니다.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/show-me-the-coffee@0.1.1/dist/show-me-the-coffee.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/show-me-the-coffee@0.1.3/dist/show-me-the-coffee.js"></script>
 <script>
   SMTC('boot', {
     kakaoPayUrl: 'https://qr.kakaopay.com/xxxx',
