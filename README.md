@@ -1,10 +1,17 @@
 # show-me-the-coffee
 
-간편하게 붙이는 커피 후원 위젯입니다.   
-카카오페이에서 링크를 생성한 후 링크만으로 후원 위젯을 붙이실 수 있습니다.
+카카오페이에서 링크를 생성한 후,  
+**링크만으로 후원 위젯을 붙이실 수 있습니다.**
 
 버튼을 누르면 QR과 카카오페이 이동 버튼이 있는 후원 창이 열립니다.
 모바일에서는 QR을 노출하지 않는 옵션도 제공합니다.
+
+## 적용 화면
+
+| 데스크톱 · QR과 버튼 표시 | 모바일 · QR 숨김, 버튼 유지 |
+| --- | --- |
+| ![to-high 데스크톱 후원 창: QR과 카카오페이 버튼 표시](https://raw.githubusercontent.com/fullth/show-me-the-coffee/master/docs/screenshots/to-high-desktop.png) | ![to-high 모바일 후원 창: QR 없이 카카오페이 버튼만 표시](https://raw.githubusercontent.com/fullth/show-me-the-coffee/master/docs/screenshots/to-high-mobile.png) |
+
 
 ## 주요기능 
 - QR 이미지 자동 생성
@@ -12,14 +19,6 @@
 - **모바일 QR 숨김 옵션 제공**: `hideQrOnMobile: true`
 - 이름 선택 표시: `name`을 생략하면 이름과 전달 안내를 표시하지 않음
 - 별도 서버 없이 사용 가능, 사용 이벤트 수집은 선택 사항
-
-## 적용 화면
-
-[to-high](https://github.com/fullth/to-high)에 수정한 라이브러리를 연결한 **로컬 미리보기**입니다. 두 이미지 모두 1:1 비율이며, 모바일 QR 숨김 옵션을 켠 상태입니다. 버튼의 세이지 색상과 유리 질감은 to-high의 설정·스타일입니다.
-
-| 데스크톱 · QR과 버튼 표시 | 모바일 · QR 숨김, 버튼 유지 |
-| --- | --- |
-| ![to-high 데스크톱 후원 창: QR과 카카오페이 버튼 표시](https://raw.githubusercontent.com/fullth/show-me-the-coffee/master/docs/screenshots/to-high-desktop.png) | ![to-high 모바일 후원 창: QR 없이 카카오페이 버튼만 표시](https://raw.githubusercontent.com/fullth/show-me-the-coffee/master/docs/screenshots/to-high-mobile.png) |
 
 ## 빠른 시작
 
@@ -46,8 +45,6 @@
   });
 </script>
 ```
-
-위 예시는 현재 공개 버전입니다. 새 옵션을 사용하려면 해당 옵션이 포함된 버전으로 스크립트 URL을 변경하세요.
 
 ### npm
 
@@ -85,7 +82,9 @@ SMTC('boot', {
 
 화면 크기가 바뀌면 자동으로 전환됩니다. QR을 숨겨도 후원 링크는 유지됩니다.
 
-`hideQrOnMobile: true`이고 `description`을 생략하면 기본 설명은 “아래 버튼으로 카카오페이를 열어주세요.”입니다. 이 문구는 모든 화면에서 사용하며, 직접 지정한 `description`은 그대로 유지됩니다.
+`hideQrOnMobile: true`이고 `description`을 생략하면 기본 설명은 “아래 버튼으로 카카오페이를 열어주세요.”입니다.  
+
+이 문구는 모든 화면에서 사용하며, 직접 지정한 `description`은 그대로 유지됩니다.
 
 ## 수취인 이름 표시 설정
 
@@ -133,7 +132,9 @@ SMTC('boot', {
 | `title` | `string` | `label` 값 | 후원 창 제목 |
 | `description` | `string` | QR 스캔·카카오페이 안내 | 후원 창 설명. 모바일 QR 숨김 옵션을 켜면 카카오페이 안내로 변경 |
 
-기본 `description`은 “QR을 스캔하거나 아래 버튼으로 카카오페이를 열어주세요”입니다. 모바일 QR 숨김 옵션을 켰을 때의 기본값은 위의 [모바일 QR 표시 설정](#모바일-qr-표시-설정)을 참고하세요.
+기본 `description`은 “QR을 스캔하거나 아래 버튼으로 카카오페이를 열어주세요”입니다.  
+
+모바일 QR 숨김 옵션을 켰을 때의 기본값은 위의 [모바일 QR 표시 설정](#모바일-qr-표시-설정)을 참고하세요.
 
 ### 모양과 위치
 
@@ -157,7 +158,9 @@ SMTC('boot', {
 | `siteKey` | `string` | 생략 | 이벤트에 포함할 서비스 식별자 |
 | `endpoint` | `string` | 생략 | 이벤트를 전송할 URL. 생략하면 `window.dataLayer`에 추가 |
 
-수집 이벤트는 `loaded`, `open`, `click_pay`이며, 서비스 식별자·도메인·경로·시각을 포함합니다. 송금 완료 여부나 금액은 확인하지 않습니다. `analytics: false`이면 수집하지 않습니다.
+수집 이벤트는 `loaded`, `open`, `click_pay`이며, 서비스 식별자·도메인·경로·시각을 포함합니다.  
+
+송금 완료 여부나 금액은 확인하지 않습니다. `analytics: false`이면 수집하지 않습니다.
 
 ## 적용 후 확인
 
