@@ -1,5 +1,9 @@
 # show-me-the-coffee
 
+[![npm version](https://img.shields.io/npm/v/show-me-the-coffee.svg)](https://www.npmjs.com/package/show-me-the-coffee)
+
+[npm 패키지](https://www.npmjs.com/package/show-me-the-coffee)
+
 카카오페이에서 링크를 생성한 후,  
 **링크만으로 후원 위젯을 붙이실 수 있습니다.**
 
