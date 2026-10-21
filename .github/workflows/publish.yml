@@ -19,14 +19,14 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           cache: npm
       - name: Enable npm trusted publishing
-        run: npm install --global npm@11
+        run: npm install --global npm@12
       - run: npm ci
       - run: npm run typecheck
       - run: npm run build
@@ -38,13 +38,33 @@ jobs:
           node --input-type=module <<'JS'
           import fs from 'node:fs';
           const { version } = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-          if (![ `v${version}`, `publish-v${version}` ].includes(process.env.RELEASE_TAG)) {
+          const tag = process.env.RELEASE_TAG.replace(/-retry\d+$/, '');
+          if (![ `v${version}`, `publish-v${version}` ].includes(tag)) {
             throw new Error('Release tag must match package.json version');
           }
           JS
-      - name: Publish with provenance
-        run: npm publish --provenance --access public
-      - name: Check published version
+      - name: Stage package with provenance
+        id: npm-publish
+        run: npm stage publish --provenance --access public 2>&1 | tee "$RUNNER_TEMP/npm-publish.log"
+      - name: Report npm publish error
+        if: failure() && steps.npm-publish.outcome == 'failure'
         run: |
-          version=$(node -p "require('./package.json').version")
-          npm view "show-me-the-coffee@$version" version
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          const log = fs.readFileSync(`${process.env.RUNNER_TEMP}/npm-publish.log`, 'utf8');
+          const errors = log.split('\n').filter(line => /^npm error (code |(?:401|403|404) |need auth|This command requires|You need to authorize)/.test(line));
+          for (const line of errors.slice(0, 8)) {
+            const safe = line.replaceAll('%', '%25').replaceAll('\r', '%0D');
+            console.log(`::error title=npm publish::${safe}`);
+          }
+          JS
+      - name: Report staged package
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          const log = fs.readFileSync(`${process.env.RUNNER_TEMP}/npm-publish.log`, 'utf8');
+          const result = log.split('\n').find(line => line.includes('(staged'));
+          if (!result) throw new Error('npm did not report a staged package');
+          console.log(`::notice title=npm approval required::${result}`);
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${result}\n\n패키지 소유자가 npm에서 2FA로 승인하면 공개됩니다.\n`);
+          JS
