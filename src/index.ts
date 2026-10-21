@@ -9,7 +9,7 @@ type BootCommand = 'boot';
 /**
  * 전역 API. 채널톡과 같은 명령형 인터페이스.
  *
- *   SMTC('boot', { kakaoPayUrl: 'https://qr.kakaopay.com/xxx', name: '임태환' });
+ *   SMTC('boot', { kakaoPayUrl: 'https://qr.kakaopay.com/xxx', hideQrOnMobile: true });
  */
 export function SMTC(command: BootCommand, options: CoffeeOptions): void {
   if (command !== 'boot') {

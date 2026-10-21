@@ -6,6 +6,8 @@ export interface CoffeeOptions {
   kakaoPayUrl: string;
   /** 수취인 이름. 모달 하단에 "OOO 님에게 전달됩니다"로 노출. */
   name?: string;
+  /** 767px 이하 화면에서 QR을 숨기고 카카오페이 버튼만 표시. 기본 false. */
+  hideQrOnMobile?: boolean;
   /** 서비스 식별자. 어느 서비스가 위젯을 쓰는지 추적할 때 사용. */
   siteKey?: string;
 

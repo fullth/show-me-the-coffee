@@ -60,6 +60,10 @@ const STYLE = `
   }
   .qr img { width: 100%; height: 100%; display: block; }
 
+  @media (max-width: 767px) {
+    .hide-qr-on-mobile .qr { display: none; }
+  }
+
   .pay {
     display: block; width: 100%; padding: 13px; border: none; border-radius: 12px;
     background: var(--smtc-accent); color: var(--smtc-text);
@@ -119,7 +123,7 @@ export function mount(opts: ResolvedOptions): void {
       <span class="icon">${opts.icon}</span><span>${opts.label}</span>
     </button>
     <div class="overlay">
-      <div class="modal" role="dialog" aria-modal="true" aria-label="후원하기">
+      <div class="modal${opts.hideQrOnMobile ? ' hide-qr-on-mobile' : ''}" role="dialog" aria-modal="true" aria-label="후원하기">
         <button class="close" aria-label="닫기">&times;</button>
         <h2><span class="icon">${opts.icon}</span> ${opts.title}</h2>
         <p class="sub">${opts.description}</p>

@@ -24,20 +24,20 @@
 &lt;script&gt;
   SMTC('boot', {
     kakaoPayUrl: 'https://qr.kakaopay.com/Ej84nMWnw',
-    name: '임태환',
+    hideQrOnMobile: true,
     siteKey: 'fin-term',
     analytics: true,
   });
 &lt;/script&gt;</pre>
     <div class="box"></div>
-    <p>우하단 버튼을 눌러 QR 모달을 확인하세요. 색·아이콘·문구·크기 전부 옵션으로 바꿀 수 있습니다.</p>
+    <p>우하단 버튼을 눌러 후원 창을 확인하세요. 이 예제는 모바일에서 QR을 숨기는 옵션을 켰으며, 수취인 이름을 생략했습니다. 화면 너비가 768px 이상이면 QR도 표시됩니다.</p>
   </div>
 
   <script src="../dist/show-me-the-coffee.js"></script>
   <script>
     SMTC('boot', {
       kakaoPayUrl: 'https://qr.kakaopay.com/Ej84nMWnw',
-      name: '임태환',
+      hideQrOnMobile: true,
       siteKey: 'fin-term',
       analytics: true,
     });

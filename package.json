@@ -1,7 +1,15 @@
 {
   "name": "show-me-the-coffee",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "채널톡처럼 스크립트 한 줄로 붙이는 커피 한 잔 후원 위젯. 카카오페이 QR + 커스텀 가능한 플로팅 버튼.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullth/show-me-the-coffee.git"
+  },
+  "homepage": "https://github.com/fullth/show-me-the-coffee#readme",
+  "bugs": {
+    "url": "https://github.com/fullth/show-me-the-coffee/issues"
+  },
   "type": "module",
   "main": "./dist/show-me-the-coffee.esm.js",
   "module": "./dist/show-me-the-coffee.esm.js",
@@ -16,7 +24,8 @@
   "jsdelivr": "./dist/show-me-the-coffee.js",
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "docs/screenshots"
   ],
   "scripts": {
     "dev": "vite",

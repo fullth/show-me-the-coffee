@@ -17,6 +17,7 @@ export type ResolvedOptions = Required<
     | 'offsetY'
     | 'theme'
     | 'analytics'
+    | 'hideQrOnMobile'
   >
 > &
   Pick<CoffeeOptions, 'name' | 'siteKey' | 'endpoint'>;
@@ -34,6 +35,7 @@ const DEFAULTS = {
   offsetY: 24,
   theme: 'light',
   analytics: false,
+  hideQrOnMobile: false,
 } as const;
 
 /** 사용자 옵션에 기본값을 채워 완결된 옵션으로 만든다. */
@@ -46,5 +48,9 @@ export function resolveOptions(input: CoffeeOptions): ResolvedOptions {
     ...merged,
     // 모달 제목 미지정 시 버튼 문구로 폴백
     title: input.title ?? merged.label,
+    // 모바일에 QR이 없을 때도 맞는 기본 안내를 사용한다. 직접 지정한 문구는 유지한다.
+    description: input.description ?? (merged.hideQrOnMobile
+      ? '아래 버튼으로 카카오페이를 열어주세요.'
+      : merged.description),
   };
 }
